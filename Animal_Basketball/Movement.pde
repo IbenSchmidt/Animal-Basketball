@@ -1,26 +1,26 @@
-boolean moveLeft,moveRight;
+boolean moveLeft, moveRight;
 boolean handIsLoaded = false;
 
-void keyPressed(){
-  if (keyCode=='A'){
+void keyPressed() {
+  if (keyCode=='A') {
     moveLeft = true;
   }
-  if (keyCode=='D'){
+  if (keyCode=='D') {
     moveRight = true;
   }
-  if (keyCode==' ' && ball.attachedToHand){
+  if (keyCode==' ' && ball.attachedToHand) {
     handIsLoaded = true;
   }
 }
 
-void keyReleased(){
-  if (keyCode=='A'){
+void keyReleased() {
+  if (keyCode=='A') {
     moveLeft = false;
   }
-  if (keyCode=='D'){
+  if (keyCode=='D') {
     moveRight = false;
   }
-  if (keyCode==' ' && handIsLoaded){
+  if (keyCode==' ' && handIsLoaded) {
     handIsLoaded = false;
     hand.fire();
   }
