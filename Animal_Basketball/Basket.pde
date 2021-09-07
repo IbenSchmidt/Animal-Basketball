@@ -13,8 +13,9 @@ class Basket {
 
   void update() {
     fill(0, 255, 0);
-    rect(pos.x, pos.y, size.x, size.y);
+    //rect(pos.x, pos.y, size.x, size.y);
     circle(pos.x+size.x/2, pos.y+size.y/2, radius*2);
+    image(basketBillede,pos.x,pos.y);
     pos.add(speed);
     if (pos.x+size.x>width ||pos.x<0) {
       speed.mult(-1);

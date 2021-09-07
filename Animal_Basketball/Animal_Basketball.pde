@@ -1,8 +1,14 @@
 Hand hand;
 Ball ball;
 Basket basket;
+PImage basketBillede;
+PImage basketballBillede;
 
 void setup() {
+  basketBillede = loadImage("Basket2.png");
+  basketballBillede = loadImage("Basketball.png");
+  loadImage("Butik.png");
+  loadImage("Start.png");
   size(1100,900);
   frameRate(200);
   ball = new Ball(50);

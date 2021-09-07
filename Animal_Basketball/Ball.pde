@@ -11,7 +11,7 @@ class Ball {
 
   Ball(float posX) {
     pos = new PVector(posX, height-112.5);
-    radius = 25;
+    radius = 50;
     attachedToHand = true;
   }
 
@@ -35,6 +35,7 @@ class Ball {
     }
     fill(238, 103, 48);
     circle(pos.x, pos.y, radius);
+    image(basketballBillede,pos.x-25,pos.y-25);
   }
 
   void collisionCheck(PVector basket_size, PVector basket_pos, float basket_radius) {
