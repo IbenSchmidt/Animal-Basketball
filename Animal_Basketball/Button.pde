@@ -21,7 +21,6 @@ class Button {
       boolean mouse_press_y = pos.y - size.y/2 < mouseY && mouseY < pos.y + size.y/2;
       if (mouse_press_x && mouse_press_y) {
         page = action;
-        println(page);
       }
     }
     imageMode(CORNER);
