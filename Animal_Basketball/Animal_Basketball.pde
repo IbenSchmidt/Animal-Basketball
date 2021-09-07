@@ -22,8 +22,8 @@ void setup() {
   
   bg = loadImage("images/background.png");
   
-  start_btn = new Button("game", new PVector(width/2 - 100, height/2 + 75), new PVector(100, 50));
-  shop_btn = new Button("shop", new PVector(width/2 + 100, height/2 + 75), new PVector(100, 50));
+  start_btn = new Button("game", new PVector(width/2 - 100, height/2 + 75), new PVector(176, 87));
+  shop_btn = new Button("shop", new PVector(width/2 + 100, height/2 + 75), new PVector(176, 87));
 }
 
 
