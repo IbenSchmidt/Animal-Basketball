@@ -16,8 +16,10 @@ class Button {
     
     // Check for tryk på knappen
     if (mousePressed == true) {
-      if (pos.x - size.x/2 < mouseX && mouseX < pos.x + size.x/2) {
-        page = "game";
+      boolean mouse_press_x = pos.x - size.x/2 < mouseX && mouseX < pos.x + size.x/2;
+      boolean mouse_press_y = pos.y - size.y/2 < mouseY && mouseY < pos.y + size.y/2;
+      if (mouse_press_x && mouse_press_y) {
+        page = action;
         println(page);
       }
     }
