@@ -12,10 +12,8 @@ PImage bg;
 String page = "start"; 
 
 void setup() {
-  basketBillede = loadImage("Basket2.png");
-  basketballBillede = loadImage("Basketball.png");
-  loadImage("Butik.png");
-  loadImage("Start.png");
+  basketBillede = loadImage("images/Basket2.png");
+  basketballBillede = loadImage("images/Basketball.png");
   size(1100,900);
   frameRate(200);
   ball = new Ball(50);
