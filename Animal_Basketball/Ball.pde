@@ -33,8 +33,10 @@ class Ball {
     reload = false;
     if (pos.y>height-12.5) {
       if(ableToScore){
+        // DØ HER
         page = "start";
         totalPoints = totalPoints + points;
+        all_available_points += points;
         points=0;
         basket.pos.y=300;
         // åbn er database fil, og skriv hvor mange point der er i alt
@@ -62,7 +64,6 @@ class Ball {
       ableToScore = false;
       points = points + 1;
       pos = new PVector(-1000,-1000);
-      println(points);
     }
   }
 }

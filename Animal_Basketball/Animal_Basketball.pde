@@ -13,10 +13,13 @@ PImage bg;
 PImage bgspil;
 PImage bgshop;
 
+int all_available_points;
 
 String page = "start";
 
 void setup() {
+  all_available_points = 0;
+  
   basketBillede = loadImage("images/Basket2.png");
   basketballBillede = loadImage("images/Basketball.png");
   size(1100,900);
@@ -43,6 +46,7 @@ void draw() {
     start_btn.update();
     shop_btn.update();
   } else if (page == "shop") {
+    background(bgshop);
     shop.update();
   } else if (page == "game") {
     background(bgspil);

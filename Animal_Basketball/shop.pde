@@ -39,10 +39,10 @@ class Shop {
   
   void buyCurrentItem() {
     // println("Bought: " + shopItems.get(cursor_item).img_name);
-    if (ball.points >= shopItems.get(cursor_item).price) {
-      ball.points -= shopItems.get(cursor_item).price;
-      hand.billedeid = int(shopItems.get(cursor_item).img_name);
-      println(ball.points + "----" + random(1));
+    if (all_available_points >= shopItems.get(cursor_item).price) {
+      all_available_points -= shopItems.get(cursor_item).price;
+      hand.updateHandImage(int(shopItems.get(cursor_item).img_name));
+      println(all_available_points + "----" + random(1));
     } else {
       println("No more points!!! " + random(1)); 
     }

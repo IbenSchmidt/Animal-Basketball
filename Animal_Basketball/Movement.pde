@@ -42,7 +42,7 @@ void keyReleased() {
     }
   }
   
-  if (page == "shop" && keyCode == BACKSPACE) {
+  if (keyCode == BACKSPACE) {
     page = "start";
   }
 }
