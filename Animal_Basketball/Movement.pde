@@ -34,12 +34,14 @@ void keyReleased() {
     if (shop.cursor_item == shop.shopItems.size()) {
       shop.cursor_item = 0; 
     }
+    println(shop.cursor_item);
   }
   if (page == "shop" && keyCode == LEFT) {
     shop.cursor_item--;
-    if (shop.cursor_item == 0) {
-      shop.cursor_item = shop.shopItems.size();
+    if (shop.cursor_item == -1) {
+      shop.cursor_item = shop.shopItems.size()-1;
     }
+    println(shop.cursor_item);
   }
   
   if (keyCode == BACKSPACE) {

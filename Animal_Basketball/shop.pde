@@ -24,24 +24,34 @@ class Shop {
   }
 
   void update() {
+    fill(255);
+    textSize(30);
+    text("Penge: " + all_available_points, 30,50);
+    
     // Itere over shop items og tegn dem. 
     for (int i = 0; i < shopItems.size(); i++) {
       ShopItem shopItem = shopItems.get(i);
+      image(shopItem.normal_img, width/2 - totalLength/2 + i*(imageSize+imageSpacing), 500);
       if (i == cursor_item) {
-        rect(width/2 - totalLength/2 + i*(imageSize+imageSpacing), 500, imageSize * 1.1, imageSize*1.1);
+        fill(0,0,100);
+        textSize(40);
       } else {
-        rect(width/2 - totalLength/2 + i*(imageSize+imageSpacing), 500, imageSize, imageSize);
+        textSize(30);
       }
-      textSize(30);
       text(shopItem.price, width/2 - totalLength/2 + i*(imageSize+imageSpacing), 500 + imageSize + 75);
+      fill(255);
     }
   }
   
   void buyCurrentItem() {
     // println("Bought: " + shopItems.get(cursor_item).img_name);
     if (all_available_points >= shopItems.get(cursor_item).price) {
-      all_available_points -= shopItems.get(cursor_item).price;
-      hand.updateHandImage(int(shopItems.get(cursor_item).img_name));
+      if (!hand.updateHandImage(
+        int(shopItems.get(cursor_item).img_name),
+        shopItems.get(cursor_item).price
+      )) {
+        text("Du ejer allerede denne genstand", 30, 100);
+      }
       println(all_available_points + "----" + random(1));
     } else {
       println("No more points!!! " + random(1)); 
@@ -52,9 +62,13 @@ class Shop {
 class ShopItem {
   public String img_name;
   public int price;
+  public PImage normal_img;
+  public PImage big_img;
 
   ShopItem (String img_name_, int price_) {
     img_name = img_name_;
     price = price_;
+    normal_img = loadImage("images/Hånd"+img_name+".png");
+    big_img = loadImage("images/Hånd"+img_name+".png");
   }
 }

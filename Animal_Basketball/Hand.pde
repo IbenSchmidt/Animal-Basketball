@@ -1,16 +1,24 @@
 class Hand {
   public float pos;
   PImage billede;
+  int billedeid;
   public PVector force;
   float forceDisplay;
   boolean shoot = false;
 
   Hand() {
+    billedeid = 1;
     billede = loadImage("images/Hånd1.png");
   }
 
-  void updateHandImage(int billedeid_) {
-    billede = loadImage("images/Hånd"+billedeid_+".png"); 
+  boolean updateHandImage(int billedeid_, int price) {
+    if (billedeid != billedeid_) {
+      all_available_points -= price;
+      billedeid = billedeid_;
+      billede = loadImage("images/Hånd"+billedeid_+".png");
+      return true;
+    }
+    return false;
   }
 
   void update(boolean reload) {
