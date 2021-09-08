@@ -1,11 +1,14 @@
 class Hand {
   public float pos;
   int billedeid;
+  PImage billede;
   public PVector force;
   float forceDisplay;
   boolean shoot = false;
 
   Hand() {
+    billedeid = 1;
+    billede = loadImage("images/Hånd"+billedeid+".png");
   }
 
   void update(boolean reload) {
@@ -20,7 +23,8 @@ class Hand {
       force = new PVector (0, 0);
     }
     fill(255);
-    rect(pos, height-100, 100, 100);
+    image(billede,pos,height-100);
+    //rect(pos, height-100, 50, 100);
   }
 
   void fire() {
