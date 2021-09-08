@@ -8,6 +8,8 @@ Button start_btn;
 Button shop_btn;
 
 PImage bg;
+PImage bgspil;
+PImage bgshop;
 
 String page = "start"; 
 
@@ -19,8 +21,9 @@ void setup() {
   ball = new Ball(50);
   hand = new Hand();
   basket = new Basket(new PVector(225, 150), new PVector(15, 300));
-  
+  bgshop = loadImage("images/Shopskærm.png");
   bg = loadImage("images/background.png");
+  bgspil = loadImage("images/Spilskærm.png");
   
   start_btn = new Button("game", new PVector(width/2 - 100, height/2 + 75), new PVector(176, 87));
   shop_btn = new Button("shop", new PVector(width/2 + 100, height/2 + 75), new PVector(176, 87));
@@ -28,8 +31,8 @@ void setup() {
 
 
 void draw() {
-  background(bg);
   if (page == "start") {
+    background(bg);
     start_btn.update();
     shop_btn.update();
   } else if (page == "shop") {
@@ -38,7 +41,7 @@ void draw() {
     println("Du er ved shoppen");
     page = "start";
   } else if (page == "game") {
-    //background(255);
+    background(bgspil);
     basket.update();
     hand.update(ball.reload);
     ball.update(hand.pos, hand.force, hand.shoot);

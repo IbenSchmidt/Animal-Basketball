@@ -8,6 +8,7 @@ class Ball {
   public boolean reload;
   boolean ableToScore = true;
   public int points;
+  public int totalPoints;
 
   Ball(float posX) {
     pos = new PVector(posX, height-112.5);
@@ -29,9 +30,18 @@ class Ball {
     }
     reload = false;
     if (pos.y>height-12.5) {
+      if(ableToScore){
+        page = "start";
+        totalPoints = totalPoints + points;
+        points=0;
+        basket.pos.y=300;
+        
+      }
+      
       attachedToHand=true;
       reload = true;
       ableToScore = true;
+      
     }
     fill(238, 103, 48);
     circle(pos.x, pos.y, radius);
