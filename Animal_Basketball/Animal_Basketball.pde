@@ -7,6 +7,8 @@ PImage basketballBillede;
 Button start_btn;
 Button shop_btn;
 
+Shop shop;
+
 PImage bg;
 
 String page = "start"; 
@@ -22,11 +24,14 @@ void setup() {
   hand = new Hand();
   basket = new Basket(new PVector(225, 150), new PVector(15, 300));
   
+  shop = new Shop();
+  
   bg = loadImage("images/background.png");
   
   start_btn = new Button("game", new PVector(width/2 - 100, height/2 + 75), new PVector(176, 87));
   shop_btn = new Button("shop", new PVector(width/2 + 100, height/2 + 75), new PVector(176, 87));
 }
+
 
 
 void draw() {
@@ -35,10 +40,7 @@ void draw() {
     start_btn.update();
     shop_btn.update();
   } else if (page == "shop") {
-    start_btn.update();
-    shop_btn.update();
-    println("Du er ved shoppen");
-    page = "start";
+    shop.update();
   } else if (page == "game") {
     //background(255);
     basket.update();

@@ -10,6 +10,7 @@ class Ball {
   public int points;
 
   Ball(float posX) {
+    points = 0;
     pos = new PVector(posX, height-112.5);
     radius = 50;
     attachedToHand = true;
