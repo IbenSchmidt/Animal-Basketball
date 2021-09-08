@@ -3,7 +3,7 @@ PVector gravity = new PVector(0, 0.1);
 class Ball {
   PVector pos;
   PVector force;
-  int radius;
+  float radius;
   public boolean attachedToHand;
   public boolean reload;
   boolean ableToScore = true;
@@ -57,9 +57,10 @@ class Ball {
 
     // hvis distancen mellem basket_center og bolden er mindre end r, tæl som ramt
     float dist = sq(basket_center.x - pos.x) + sq(basket_center.y - pos.y);
-    if (sqrt(dist) < basket_radius && ableToScore) {
+    if (sqrt(dist) < basket_radius && ableToScore && force.y > 0) {
       ableToScore = false;
       points = points + 1;
+      pos = new PVector(-1000,-1000);
       println(points);
     }
   }
