@@ -11,6 +11,7 @@ PImage bg;
 PImage bgspil;
 PImage bgshop;
 
+
 String page = "start"; 
 
 void setup() {
@@ -43,10 +44,12 @@ void draw() {
   } else if (page == "game") {
     background(bgspil);
     basket.update();
-    hand.update(ball.reload);
     ball.update(hand.pos, hand.force, hand.shoot);
     ball.collisionCheck(basket.size, basket.pos, basket.radius);
+    hand.update(ball.reload);
     textSize(50);
-    text("Your points: "+ball.points,25,75);
+    fill(0);
+    text("Your points: "+ball.points,150,70);
+    text("Highscore: "+ball.highscore,600,70);
   }
 }
