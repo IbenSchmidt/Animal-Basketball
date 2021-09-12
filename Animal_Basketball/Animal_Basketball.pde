@@ -18,7 +18,7 @@ int all_available_points;
 String page = "start";
 
 void setup() {
-  all_available_points = 0;
+  all_available_points = 50;
   
   basketBillede = loadImage("images/Basket2.png");
   basketballBillede = loadImage("images/Basketball.png");

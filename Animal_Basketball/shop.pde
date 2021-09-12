@@ -1,9 +1,14 @@
+String message = "";
+
 class Shop {
   ArrayList<ShopItem> shopItems = new ArrayList<ShopItem>();
+  ArrayList<BuyButton> buyButtons = new ArrayList<BuyButton>();
   public int points = 0;
 
   public int cursor_item;
-  
+
+  Button backButton = new Button("game", new PVector(100, 50), new PVector(100, 40)); 
+
   int totalLength;
   int imageSize;
   int imageSpacing;
@@ -21,41 +26,42 @@ class Shop {
     totalLength = imageSize * shopItems.size() + imageSpacing * (shopItems.size() - 1);
 
     cursor_item = 0;
+
+    for (int i = 0; i < shopItems.size(); i++) {
+      PVector buttonPos = new PVector(width/2 - totalLength/2 + i*(imageSize+imageSpacing), 500 + imageSize + 75);
+      buyButtons.add(new BuyButton(shopItems.get(i), new PVector(100, 255, 100), buttonPos));
+    }
   }
 
   void update() {
     fill(255);
     textSize(30);
-    text("Penge: " + all_available_points, 30,50);
-    
+
+    backButton.update();
+    text("Penge: " + all_available_points, 30, 150);
+    text(message, 30, 200);
+
     // Itere over shop items og tegn dem. 
     for (int i = 0; i < shopItems.size(); i++) {
       ShopItem shopItem = shopItems.get(i);
+      BuyButton buyButton = buyButtons.get(i);
       image(shopItem.normal_img, width/2 - totalLength/2 + i*(imageSize+imageSpacing), 500);
-      if (i == cursor_item) {
-        fill(0,0,100);
-        textSize(40);
-      } else {
-        textSize(30);
-      }
-      text(shopItem.price, width/2 - totalLength/2 + i*(imageSize+imageSpacing), 500 + imageSize + 75);
+      buyButton.update();
       fill(255);
     }
   }
-  
-  void buyCurrentItem() {
-    // println("Bought: " + shopItems.get(cursor_item).img_name);
-    if (all_available_points >= shopItems.get(cursor_item).price) {
-      if (!hand.updateHandImage(
-        int(shopItems.get(cursor_item).img_name),
-        shopItems.get(cursor_item).price
-      )) {
-        text("Du ejer allerede denne genstand", 30, 100);
+
+  boolean buyCurrentItem(ShopItem item) {
+    if (all_available_points >= item.price) {
+      if (!hand.updateHandImage(int(item.img_name), item.price)) {
+        message = "Du ejer allerede denne genstand";
+        return false;
       }
-      println(all_available_points + "----" + random(1));
-    } else {
-      println("No more points!!! " + random(1)); 
+      message = "Købt genstand";
+      return true;
     }
+    message = "Du har ikke nok penge";
+    return false;
   }
 }
 
