@@ -32,7 +32,7 @@ void setup() {
 
   shop = new Shop();
 
-  bg = loadImage("images/background.png");
+  bg = loadImage("images/background1.png");
   bgspil = loadImage("images/Spilskærm.png");
   bgshop = loadImage("images/Shopskærm.png");
 
