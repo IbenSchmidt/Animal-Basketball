@@ -5,9 +5,7 @@ class Shop {
   ArrayList<BuyButton> buyButtons = new ArrayList<BuyButton>();
   public int points = 0;
 
-  public int cursor_item;
-
-  Button backButton = new Button("game", new PVector(100, 50), new PVector(100, 40)); 
+  public int cursor_item; 
 
   int totalLength;
   int imageSize;
@@ -37,7 +35,7 @@ class Shop {
     fill(255);
     textSize(30);
 
-    backButton.update();
+    start_btn.update();
     text("Penge: " + all_available_points, 30, 150);
     text(message, 30, 200);
 

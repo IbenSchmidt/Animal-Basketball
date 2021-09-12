@@ -32,7 +32,7 @@ class Ball {
     }
     reload = false;
     if (pos.y>height-12.5) {
-      if(ableToScore){
+      if (ableToScore) {
         // DØ HER
         page = "start";
         totalPoints = totalPoints + points;
@@ -41,18 +41,17 @@ class Ball {
         basket.pos.y=300;
         // åbn er database fil, og skriv hvor mange point der er i alt
       }
-      
+
       attachedToHand=true;
       reload = true;
       ableToScore = true;
-      
     }
     fill(238, 103, 48);
     circle(pos.x, pos.y, radius);
-    image(basketballBillede,pos.x-25,pos.y-25);
-    if(points>highscore){
-          highscore=points;
-        }
+    image(basketballBillede, pos.x-25, pos.y-25);
+    if (points>highscore) {
+      highscore=points;
+    }
   }
 
   void collisionCheck(PVector basket_size, PVector basket_pos, float basket_radius) {
@@ -63,7 +62,7 @@ class Ball {
     if (sqrt(dist) < basket_radius && ableToScore && force.y > 0) {
       ableToScore = false;
       points = points + 1;
-      pos = new PVector(-1000,-1000);
+      pos = new PVector(-1000, -1000);
     }
   }
 }

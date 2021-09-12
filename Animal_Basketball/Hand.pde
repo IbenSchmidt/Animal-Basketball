@@ -33,7 +33,7 @@ class Hand {
       force = new PVector (0, 0);
     }
     fill(255);
-    image(billede,pos,height-100);
+    image(billede, pos, height-100);
     //rect(pos, height-100, 50, 100);
   }
 
