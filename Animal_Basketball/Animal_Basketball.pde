@@ -14,6 +14,7 @@ Shop shop;
 PImage bg;
 PImage bgspil;
 PImage bgshop;
+PImage bginfo;
 
 int all_available_points;
 
@@ -35,6 +36,7 @@ void setup() {
   bg = loadImage("images/background1.png");
   bgspil = loadImage("images/Spilskærm.png");
   bgshop = loadImage("images/Shopskærm.png");
+  bginfo = loadImage("images/Controls.png");
 
   game_btn = new Button("game", new PVector(width/2 - 100, height/2 + 75), new PVector(176, 87));
   shop_btn = new Button("shop", new PVector(width/2 + 100, height/2 + 75), new PVector(176, 87));
@@ -55,11 +57,8 @@ void draw() {
     background(bgshop);
     shop.update();
   } else if (page == "info") {
-    background(bgshop);
+    background(bginfo);
     start_btn.update();
-    textSize(30);
-    text("Bevægelse: A+D", 30, 150);
-    text("Skyd: Mellemrum", 30, 200);
   } else if (page == "game") {
     background(bgspil);
     basket.update();
