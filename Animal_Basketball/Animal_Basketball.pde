@@ -1,3 +1,9 @@
+import controlP5.*;
+
+ControlP5 cp5;
+
+EnterButton enter_button;
+
 Hand hand;
 Ball ball;
 Basket basket;
@@ -18,9 +24,25 @@ PImage bginfo;
 
 int all_available_points;
 
-String page = "start";
+String page = "login";
 
 void setup() {
+  cp5 = new ControlP5(this);
+  
+  cp5.addTextfield("username")
+     .setPosition(20,100)
+     .setSize(200,40)
+     .setFocus(true)
+     .setColor(color(255));
+     
+  cp5.addTextfield("password")
+     .setPosition(20,170)
+     .setSize(200,40)
+     .setPasswordMode(true)
+     .setColor(color(255));
+  
+  enter_button = new EnterButton(new PVector(20, 240), new PVector(176, 87));
+  
   all_available_points = 0;
 
   basketBillede = loadImage("images/Basket2.png");
@@ -48,7 +70,10 @@ void setup() {
 
 
 void draw() {
-  if (page == "start") {
+  if (page == "login") {
+    background(0);
+    enter_button.update();
+  } else if (page == "start") {
     background(bg);
     game_btn.update();
     shop_btn.update();

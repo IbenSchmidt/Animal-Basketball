@@ -28,6 +28,41 @@ class Button {
   }
 }
 
+class EnterButton {
+  PVector pos;
+  PVector size;
+  String action;
+  PImage image_;
+
+  EnterButton (PVector pos_, PVector size_) {
+    image_ = loadImage("images/start.png");
+    pos = pos_;
+    size = size_;
+  }
+
+  void update() {
+    image(image_, pos.x, pos.y);
+
+    // Check for tryk på knappen
+    if (mousePressed == true) {
+      boolean mouse_press_x = pos.x < mouseX && mouseX < pos.x + size.x;
+      boolean mouse_press_y = pos.y < mouseY && mouseY < pos.y + size.y;
+      if (mouse_press_x && mouse_press_y) {
+        String username = cp5.get(Textfield.class,"username").getText();
+        String password = cp5.get(Textfield.class,"password").getText();
+
+        // tilføj sql og database kode
+        
+        
+        // Hvis ingen fejl, så gør det her
+        cp5.get(Textfield.class, "username").setVisible(false);
+        cp5.get(Textfield.class, "password").setVisible(false);
+        page = "start";
+      }
+    }
+    imageMode(CORNER);
+  }
+}
 
 class BuyButton {
   PVector pos;
