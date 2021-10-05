@@ -44,7 +44,7 @@ void keyReleased() {
   //  println(shop.cursor_item);
   //}
 
-  if (keyCode == BACKSPACE) {
+  if (keyCode == BACKSPACE && page !="login") {
     page = "start";
   }
 }
