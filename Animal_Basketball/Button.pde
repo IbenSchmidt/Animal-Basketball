@@ -55,8 +55,8 @@ class EnterButton {
         
         
         // Hvis ingen fejl, så gør det her
-        cp5.get(Textfield.class, "username").setVisible(false);
-        cp5.get(Textfield.class, "password").setVisible(false);
+        cp5.remove("username");
+        cp5.remove("password");
         page = "start";
       }
     }
