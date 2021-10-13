@@ -60,14 +60,18 @@ class EnterButton {
           String hashed_password = hashText(password);
 
           // Look up in database
-          String sql_command = "SELECT * FROM login WHERE username='" + username + "' AND password='" + password + "';"; 
+          String sql_command = "SELECT * FROM login WHERE username='" + username + "' AND password='" + hashed_password + "';"; 
           db.query(sql_command);
-          while (db.next()) {
-            run_login_command();
+          if (!db.next()) {
+            error_messages.add("Burgernavn eller adgangskode eksisterer ikke");
           }
         } else if (action == "signup") {
           // Check hvis password er korrekt form
           // Check hvis brugernavn eksisterer
+        }
+        
+        if (error_messages.size() == 0) {
+          run_login_command(); 
         }
       }
     }
