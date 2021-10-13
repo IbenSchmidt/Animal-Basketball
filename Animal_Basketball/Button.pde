@@ -34,10 +34,13 @@ class EnterButton {
   String action;
   PImage image_;
 
-  EnterButton (PVector pos_, PVector size_) {
+  ArrayList<String> error_messages = new ArrayList<String>();
+
+  EnterButton (PVector pos_, PVector size_, String action_) {
     image_ = loadImage("images/start.png");
     pos = pos_;
     size = size_;
+    action = action_;
   }
 
   void update() {
@@ -48,20 +51,33 @@ class EnterButton {
       boolean mouse_press_x = pos.x < mouseX && mouseX < pos.x + size.x;
       boolean mouse_press_y = pos.y < mouseY && mouseY < pos.y + size.y;
       if (mouse_press_x && mouse_press_y) {
-        String username = cp5.get(Textfield.class,"username").getText();
-        String password = cp5.get(Textfield.class,"password").getText();
-        hashText(password);
+        String username = cp5.get(Textfield.class, "username").getText();
+        String password = cp5.get(Textfield.class, "password").getText();
 
         // tilføj sql og database kode
-        
-        
-        // Hvis ingen fejl, så gør det her
-        cp5.remove("username");
-        cp5.remove("password");
-        page = "start";
+        if (action == "login") {
+          // hash password
+          String hashed_password = hashText(password);
+
+          // Look up in database
+          String sql_command = "SELECT * FROM login WHERE username='" + username + "' AND password='" + password + "';"; 
+          db.query(sql_command);
+          while (db.next()) {
+            run_login_command();
+          }
+        } else if (action == "signup") {
+          // Check hvis password er korrekt form
+          // Check hvis brugernavn eksisterer
+        }
       }
     }
     imageMode(CORNER);
+  }
+
+  void run_login_command() {
+    cp5.remove("username");
+    cp5.remove("password");
+    page = "start";
   }
 }
 

@@ -1,9 +1,13 @@
 import controlP5.*;
 
+import de.bezier.data.sql.*;
+import de.bezier.data.sql.mapper.*;
+
+SQLite db;
 
 ControlP5 cp5;
 
-EnterButton enter_button;
+EnterButton login_button;
 
 Hand hand;
 Ball ball;
@@ -28,6 +32,8 @@ int all_available_points;
 String page = "login";
 
 void setup() {
+  db = new SQLite(this, "mydatabase.sqlite");
+  
   cp5 = new ControlP5(this);
 
   cp5.addTextfield("username")
@@ -46,6 +52,7 @@ void setup() {
   
   //dette er signup knappen
   enter_button = new EnterButton(new PVector((width/2)-185, 380), new PVector(174, 85));
+  //login_button = new EnterButton(new PVector(20, 240), new PVector(176, 87), "login");
   
   //Dette er hhv koordinater og størrelse på signin knappen
   //rect((width/2)+10,380,174,85);
@@ -80,7 +87,9 @@ void setup() {
 void draw() {
   if (page == "login") {
     background(bgshop);
-    enter_button.update();
+    if (db.connect()) {  
+      login_button.update();
+    }
   } else if (page == "start") {
     background(bg);
     game_btn.update();
