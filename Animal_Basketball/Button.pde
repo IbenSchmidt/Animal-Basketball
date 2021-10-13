@@ -50,6 +50,7 @@ class EnterButton {
       if (mouse_press_x && mouse_press_y) {
         String username = cp5.get(Textfield.class,"username").getText();
         String password = cp5.get(Textfield.class,"password").getText();
+        hashText(password);
 
         // tilføj sql og database kode
         
