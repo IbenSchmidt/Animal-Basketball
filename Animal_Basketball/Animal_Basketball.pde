@@ -37,18 +37,26 @@ void setup() {
   cp5 = new ControlP5(this);
 
   cp5.addTextfield("username")
-     .setPosition(20,100)
+     .setPosition((width/2)-100,180)
      .setSize(200,40)
      .setFocus(true)
+     .setFont(createFont("arial", 25, true))
      .setColor(color(255));
      
   cp5.addTextfield("password")
-     .setPosition(20,170)
+     .setPosition((width/2)-100,280)
      .setSize(200,40)
      .setPasswordMode(true)
+     .setFont(createFont("arial", 25, true))
      .setColor(color(255));
   
-  login_button = new EnterButton(new PVector(20, 240), new PVector(176, 87), "login");
+  //dette er signup knappen
+  enter_button = new EnterButton(new PVector((width/2)-185, 380), new PVector(174, 85));
+  //login_button = new EnterButton(new PVector(20, 240), new PVector(176, 87), "login");
+  
+  //Dette er hhv koordinater og størrelse på signin knappen
+  //rect((width/2)+10,380,174,85);
+  
   
   all_available_points = 0;
 
@@ -78,7 +86,7 @@ void setup() {
 
 void draw() {
   if (page == "login") {
-    background(0);
+    background(bgshop);
     if (db.connect()) {  
       login_button.update();
     }
