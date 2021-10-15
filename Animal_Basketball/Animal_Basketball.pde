@@ -33,7 +33,7 @@ String page = "login";
 
 void setup() {
   db = new SQLite(this, "mydatabase.sqlite");
-  
+
   cp5 = new ControlP5(this);
 
   cp5.addTextfield("username")
@@ -42,21 +42,20 @@ void setup() {
      .setFocus(true)
      .setFont(createFont("arial", 25, true))
      .setColor(color(255));
-     
+
   cp5.addTextfield("password")
      .setPosition((width/2)-100,280)
      .setSize(200,40)
      .setPasswordMode(true)
      .setFont(createFont("arial", 25, true))
      .setColor(color(255));
-  
+
   //dette er signup knappen
   login_button = new EnterButton(new PVector((width/2)-185, 380), new PVector(174, 85), "login");
-  //login_button = new EnterButton(new PVector(20, 240), new PVector(176, 87), "login");
   
   //Dette er hhv koordinater og størrelse på signin knappen
   //rect((width/2)+10,380,174,85);
-  
+
   all_available_points = 0;
 
   basketBillede = loadImage("images/Basket2.png");
@@ -86,7 +85,7 @@ void setup() {
 void draw() {
   if (page == "login") {
     background(bgshop);
-    if (db.connect()) {  
+    if (db.connect()) {
       login_button.update();
     }
   } else if (page == "start") {
