@@ -95,6 +95,8 @@ void draw() {
     }
   } else if (page == "start") {
     background(bg);
+    textSize(30);
+    fill(255);
     text("Hello " + username, 10, 50);
     game_btn.update();
     shop_btn.update();
