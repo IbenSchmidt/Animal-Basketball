@@ -62,7 +62,7 @@ class EnterButton {
         // tilføj sql og database kode
         if (action == "login") {
           // Look up in database
-          String sql_command = "SELECT * FROM login WHERE username='" + username + "' AND password='" + hashed_password + "';"; 
+          String sql_command = "SELECT * FROM users WHERE username='" + username + "' AND password='" + hashed_password + "';"; 
           db.query(sql_command);
           if (!db.next()) {
             error_messages.add("Burgernavn eller adgangskode eksisterer ikke");
@@ -74,7 +74,7 @@ class EnterButton {
           }
           
           // Check hvis brugernavn eksisterer
-          String sql_command = "SELECT * FROM login WHERE username='" + username + "';";
+          String sql_command = "SELECT * FROM users WHERE username='" + username + "';";
           db.query(sql_command);
           if (db.next()) {
             error_messages.add("Brugernavnet eksisterer allerede");
@@ -83,7 +83,7 @@ class EnterButton {
         
         if (error_messages.size() == 0) {
           if (action == "signup") {
-            String sql_command = "INSERT INTO login (username, password, highscore, allavailablepoints) VALUES ('" + username + "', '" + hashed_password + "', 0, 0)";
+            String sql_command = "INSERT INTO users (username, password, highscore, all_available_points) VALUES ('" + username + "', '" + hashed_password + "', 0, 0)";
             db.execute(sql_command);
           }
           run_login_command(username); 
@@ -102,7 +102,7 @@ class EnterButton {
   }
 
   void run_login_command(String username) {
-    String sql_command = "SELECT * FROM login WHERE username='"+username+"';";
+    String sql_command = "SELECT * FROM users WHERE username='"+username+"';";
     db.query(sql_command);
     
     // Ekstraher pengene og andre værdier
