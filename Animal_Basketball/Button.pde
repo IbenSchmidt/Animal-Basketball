@@ -101,12 +101,12 @@ class EnterButton {
     imageMode(CORNER);
   }
 
-  void run_login_command(String username) {
-    String sql_command = "SELECT * FROM users WHERE username='"+username+"';";
+  void run_login_command(String uname) {
+    String sql_command = "SELECT * FROM users WHERE username='"+uname+"';";
     db.query(sql_command);
     
     // Ekstraher pengene og andre værdier
-    user_id = db.getString("username");
+    username = db.getString("username");
     ball.highscore=db.getInt("highscore");
     all_available_points=db.getInt("all_available_points");
     
