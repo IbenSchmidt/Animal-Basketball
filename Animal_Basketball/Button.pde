@@ -107,6 +107,8 @@ class EnterButton {
     
     // Ekstraher pengene og andre værdier
     user_id = db.getString("username");
+    ball.highscore=db.getInt("highscore");
+    all_available_points=db.getInt("all_available_points");
     
     cp5.remove("username");
     cp5.remove("password");

@@ -8,7 +8,6 @@ class Ball {
   public boolean reload;
   boolean ableToScore = true;
   public int points;
-  public int totalPoints;
   public int highscore;
 
   Ball(float posX) {
@@ -35,10 +34,10 @@ class Ball {
       if (ableToScore) {
         // DØ HER
         page = "start";
-        totalPoints = totalPoints + points;
         all_available_points += points;
         points=0;
         basket.pos.y=300;
+        updateDatabase();
       
         // åbn er database fil, og skriv hvor mange point der er i alt
       }
