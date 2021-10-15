@@ -37,7 +37,7 @@ class EnterButton {
   ArrayList<String> error_messages = new ArrayList<String>();
 
   EnterButton (PVector pos_, PVector size_, String action_) {
-    image_ = loadImage("images/start.png");
+    image_ = loadImage("images/"+action_+".png");
     pos = pos_;
     size = size_;
     action = action_;
@@ -53,14 +53,14 @@ class EnterButton {
       if (mouse_press_x && mouse_press_y) {
         String username = cp5.get(Textfield.class, "username").getText();
         String password = cp5.get(Textfield.class, "password").getText();
+        // hash password
+        String hashed_password = hashText(password);
+
 
         error_messages = new ArrayList<String>();
 
         // tilføj sql og database kode
         if (action == "login") {
-          // hash password
-          String hashed_password = hashText(password);
-
           // Look up in database
           String sql_command = "SELECT * FROM login WHERE username='" + username + "' AND password='" + hashed_password + "';"; 
           db.query(sql_command);
@@ -69,27 +69,44 @@ class EnterButton {
           }
         } else if (action == "signup") {
           // Check hvis password er korrekt form
-          if (password.length() < 8) {
-            error_messages.add("Adgangskoden skal have minimum 8 tegn");
-          }
-           
-          String[] matches = match(password, r/"^(?=.*[A-Za-z])(?=.*)(?=.*[@$!%*#?&])[A-Za-z@$!%*#?&]{8,}$");
-          if (matches.length() > 0){
-          
+          if (match(password, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$") == null){
+            error_messages.add("Adgangskoden skal have 8 tegn, min. et tal, min. et special tegn");
           }
           
           // Check hvis brugernavn eksisterer
+          String sql_command = "SELECT * FROM login WHERE username='" + username + "';";
+          db.query(sql_command);
+          if (db.next()) {
+            error_messages.add("Brugernavnet eksisterer allerede");
+          }
         }
         
         if (error_messages.size() == 0) {
-          run_login_command(); 
+          if (action == "signup") {
+            String sql_command = "INSERT INTO login (username, password, highscore, all_available_points) VALUES ('" + username + "', '" + hashed_password + "', 0, 0)";
+            db.query(sql_command);
+          }
+          run_login_command(username); 
         }
       }
     }
+
+    int iter = 0;
+    fill(255, 0,0);
+    for (String i : error_messages) {
+      iter += 1;
+      text(i, 10, 10 + (iter*40));
+    }
+    fill(255);
     imageMode(CORNER);
   }
 
-  void run_login_command() {
+  void run_login_command(String username) {
+    String sql_command = "SELECT * FROM login WHERE username='"+username+"';";
+    db.query(sql_command);
+    
+    // Ekstraher pengene
+    
     cp5.remove("username");
     cp5.remove("password");
     page = "start";

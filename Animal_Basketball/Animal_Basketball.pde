@@ -8,6 +8,7 @@ SQLite db;
 ControlP5 cp5;
 
 EnterButton login_button;
+EnterButton signup_button;
 
 Hand hand;
 Ball ball;
@@ -52,6 +53,7 @@ void setup() {
 
   //dette er signup knappen
   login_button = new EnterButton(new PVector((width/2)-185, 380), new PVector(174, 85), "login");
+  signup_button = new EnterButton(new PVector((width/2), 380), new PVector(174, 85), "signup");
   
   //Dette er hhv koordinater og størrelse på signin knappen
   //rect((width/2)+10,380,174,85);
@@ -87,6 +89,7 @@ void draw() {
     background(bgshop);
     if (db.connect()) {
       login_button.update();
+      signup_button.update();
     }
   } else if (page == "start") {
     background(bg);
