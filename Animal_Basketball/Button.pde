@@ -54,6 +54,8 @@ class EnterButton {
         String username = cp5.get(Textfield.class, "username").getText();
         String password = cp5.get(Textfield.class, "password").getText();
 
+        error_messages = new ArrayList<String>();
+
         // tilføj sql og database kode
         if (action == "login") {
           // hash password
@@ -67,6 +69,15 @@ class EnterButton {
           }
         } else if (action == "signup") {
           // Check hvis password er korrekt form
+          if (password.length() < 8) {
+            error_messages.add("Adgangskoden skal have minimum 8 tegn");
+          }
+           
+          String[] matches = match(password, r/"^(?=.*[A-Za-z])(?=.*)(?=.*[@$!%*#?&])[A-Za-z@$!%*#?&]{8,}$");
+          if (matches.length() > 0){
+          
+          }
+          
           // Check hvis brugernavn eksisterer
         }
         

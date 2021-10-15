@@ -51,12 +51,11 @@ void setup() {
      .setColor(color(255));
   
   //dette er signup knappen
-  enter_button = new EnterButton(new PVector((width/2)-185, 380), new PVector(174, 85));
+  login_button = new EnterButton(new PVector((width/2)-185, 380), new PVector(174, 85), "login");
   //login_button = new EnterButton(new PVector(20, 240), new PVector(176, 87), "login");
   
   //Dette er hhv koordinater og størrelse på signin knappen
   //rect((width/2)+10,380,174,85);
-  
   
   all_available_points = 0;
 
