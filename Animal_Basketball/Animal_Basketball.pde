@@ -28,6 +28,7 @@ PImage bgspil;
 PImage bgshop;
 PImage bginfo;
 
+String user_id;
 int all_available_points;
 
 String page = "login";

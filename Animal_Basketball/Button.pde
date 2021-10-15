@@ -83,8 +83,8 @@ class EnterButton {
         
         if (error_messages.size() == 0) {
           if (action == "signup") {
-            String sql_command = "INSERT INTO login (username, password, highscore, all_available_points) VALUES ('" + username + "', '" + hashed_password + "', 0, 0)";
-            db.query(sql_command);
+            String sql_command = "INSERT INTO login (username, password, highscore, allavailablepoints) VALUES ('" + username + "', '" + hashed_password + "', 0, 0)";
+            db.execute(sql_command);
           }
           run_login_command(username); 
         }
@@ -105,7 +105,8 @@ class EnterButton {
     String sql_command = "SELECT * FROM login WHERE username='"+username+"';";
     db.query(sql_command);
     
-    // Ekstraher pengene
+    // Ekstraher pengene og andre værdier
+    user_id = db.getString("username");
     
     cp5.remove("username");
     cp5.remove("password");
