@@ -39,6 +39,7 @@ class Ball {
         all_available_points += points;
         points=0;
         basket.pos.y=300;
+      
         // åbn er database fil, og skriv hvor mange point der er i alt
       }
 
