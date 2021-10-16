@@ -51,11 +51,15 @@ class EnterButton {
       boolean mouse_press_x = pos.x < mouseX && mouseX < pos.x + size.x;
       boolean mouse_press_y = pos.y < mouseY && mouseY < pos.y + size.y;
       if (mouse_press_x && mouse_press_y) {
-        String username = cp5.get(Textfield.class, "username").getText();
-        String password = cp5.get(Textfield.class, "password").getText();
-        // hash password
-        String hashed_password = hashText(password);
-
+        String username = ""; 
+        String password = "";
+        String hashed_password = "";
+        try {
+          username = cp5.get(Textfield.class, "username").getText();
+          password = cp5.get(Textfield.class, "password").getText();
+          // hash password
+          hashed_password = hashText(password);
+        } catch (Exception e) {}
 
         error_messages = new ArrayList<String>();
 
@@ -79,14 +83,32 @@ class EnterButton {
           if (db.next()) {
             error_messages.add("Brugernavnet eksisterer allerede");
           }
+        } else if (action == "sletkonto") {
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
+          String sql_command = "DELETE FROM users WHERE username='"+username+"';";
+          db.execute(sql_command);
         }
+        
         
         if (error_messages.size() == 0) {
           if (action == "signup") {
             String sql_command = "INSERT INTO users (username, password, highscore, all_available_points) VALUES ('" + username + "', '" + hashed_password + "', 0, 0)";
             db.execute(sql_command);
+            run_login_command(username);
+          } else if (action == "login") {
+            run_login_command(username);
+          } else if (action == "sletkonto") {
+            println("........................................................");
+            page = "login"; 
           }
-          run_login_command(username); 
         }
       }
     }

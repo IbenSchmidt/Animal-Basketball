@@ -9,6 +9,7 @@ ControlP5 cp5;
 
 EnterButton login_button;
 EnterButton signup_button;
+EnterButton delete_button;
 
 Hand hand;
 Ball ball;
@@ -20,6 +21,7 @@ Button game_btn;
 Button shop_btn;
 Button info_btn;
 Button start_btn;
+Button delete_acc_btn;
 
 Shop shop;
 
@@ -56,6 +58,7 @@ void setup() {
   //dette er signup knappen
   login_button = new EnterButton(new PVector((width/2)-185, 380), new PVector(174, 85), "login");
   signup_button = new EnterButton(new PVector((width/2), 380), new PVector(174, 85), "signup");
+  delete_button = new EnterButton(new PVector((width/2), 380), new PVector(174, 85), "sletkonto");
   
   //Dette er hhv koordinater og størrelse på signin knappen
   //rect((width/2)+10,380,174,85);
@@ -81,8 +84,7 @@ void setup() {
   shop_btn = new Button("shop", new PVector(width/2 + 100, height/2 + 75), new PVector(176, 87));
   info_btn = new Button("info", new PVector(width/2 - 100, height/2 + 180), new PVector(176, 87));
   start_btn = new Button("start", new PVector(100, 50), new PVector(176, 87));
-  //delete account button position (new PVector(width/2+100, height/2+180) size (new PVector(174, 85)))
-  
+  delete_acc_btn = new Button("sletkonto", new PVector(width/2+100, height/2+180), new PVector(174, 85));
   
   // new PVector(100, 50), new PVector(100, 40));
 }
@@ -104,6 +106,13 @@ void draw() {
     game_btn.update();
     shop_btn.update();
     info_btn.update();
+    delete_acc_btn.update();
+  } else if (page == "sletkonto") {
+    // Yes or no
+    background(bginfo);
+    text("SLET KONTO", width/2-100, 200);
+    delete_button.update();
+    
   } else if (page == "shop") {
     background(bgshop);
     shop.update();
