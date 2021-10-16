@@ -79,8 +79,11 @@ void setup() {
 
   game_btn = new Button("game", new PVector(width/2 - 100, height/2 + 75), new PVector(176, 87));
   shop_btn = new Button("shop", new PVector(width/2 + 100, height/2 + 75), new PVector(176, 87));
-  info_btn = new Button("info", new PVector(width/2, height/2 + 180), new PVector(176, 87));
+  info_btn = new Button("info", new PVector(width/2 - 100, height/2 + 180), new PVector(176, 87));
   start_btn = new Button("start", new PVector(100, 50), new PVector(176, 87));
+  //delete account button position (new PVector(width/2+100, height/2+180) size (new PVector(174, 85)))
+  
+  
   // new PVector(100, 50), new PVector(100, 40));
 }
 
