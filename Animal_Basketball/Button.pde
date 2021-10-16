@@ -70,7 +70,7 @@ class EnterButton {
         } else if (action == "signup") {
           // Check hvis password er korrekt form
           if (match(password, "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$") == null){
-            error_messages.add("Adgangskoden skal have 8 tegn, min. et tal, min. et special tegn");
+            error_messages.add("Adgangskoden skal have minimum 8 tegn, et tal, et specielt tegn og et stort bogstav");
           }
           
           // Check hvis brugernavn eksisterer
