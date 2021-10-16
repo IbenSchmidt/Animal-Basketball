@@ -93,7 +93,17 @@ class EnterButton {
           println("........................................................");
           println("........................................................");
           println("........................................................");
-          String sql_command = "DELETE FROM users WHERE username='"+username+"';";
+          String sql_command = "DELETE FROM users WHERE username='"+user_id+"';";
+          println(sql_command);
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
+          println("........................................................");
           db.execute(sql_command);
         }
         
@@ -128,6 +138,7 @@ class EnterButton {
     db.query(sql_command);
     
     // Ekstraher pengene og andre værdier
+    user_id = db.getString("username");
     username = db.getString("username");
     ball.highscore=db.getInt("highscore");
     all_available_points=db.getInt("all_available_points");

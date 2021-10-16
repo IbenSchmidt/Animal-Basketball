@@ -30,7 +30,7 @@ PImage bgspil;
 PImage bgshop;
 PImage bginfo;
 
-String user_id;
+String user_id = "";
 String username = "";
 int all_available_points;
 
