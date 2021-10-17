@@ -1,5 +1,4 @@
 import controlP5.*;
-
 import de.bezier.data.sql.*;
 import de.bezier.data.sql.mapper.*;
 
@@ -87,7 +86,7 @@ void setup() {
   info_btn = new Button("info", new PVector(width/2 - 100, height/2 + 180), new PVector(176, 87));
   start_btn = new Button("start", new PVector(100, 50), new PVector(176, 87));
   delete_acc_btn = new Button("sletkonto", new PVector(width/2+100, height/2+180), new PVector(174, 85));
-  dont_delete_btn = new Button("start", new PVector((width/2 - 174), 380), new PVector(174, 85));
+  dont_delete_btn = new Button("start", new PVector((width/2 - 100), 422), new PVector(174, 85));
   worldrecord_btn = new Button("worldrecord", new PVector((width/2),(height/2+285)), new PVector(376,87));
   
   // new PVector(100, 50), new PVector(100, 40));
