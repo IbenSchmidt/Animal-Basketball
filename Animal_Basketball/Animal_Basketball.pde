@@ -132,7 +132,7 @@ void draw() {
         max_highscore = db.getInt("highscore"); 
       }
     }
-    text(max_highscore, 100, 400);
+    text("Den højeste score er: "+max_highscore +" Og den er lavet af ", 100, 400);
   } else if (page == "info") {
     background(bginfo);
     start_btn.update();
