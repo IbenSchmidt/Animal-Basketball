@@ -23,6 +23,7 @@ Button info_btn;
 Button start_btn;
 Button delete_acc_btn;
 Button dont_delete_btn;
+Button worldrecord_btn;
 
 Shop shop;
 
@@ -87,6 +88,7 @@ void setup() {
   start_btn = new Button("start", new PVector(100, 50), new PVector(176, 87));
   delete_acc_btn = new Button("sletkonto", new PVector(width/2+100, height/2+180), new PVector(174, 85));
   dont_delete_btn = new Button("start", new PVector((width/2 - 174), 380), new PVector(174, 85));
+  worldrecord_btn = new Button("worldrecord", new PVector((width/2),(height/2+285)), new PVector(376,87));
   
   // new PVector(100, 50), new PVector(100, 40));
 }
@@ -109,6 +111,7 @@ void draw() {
     shop_btn.update();
     info_btn.update();
     delete_acc_btn.update();
+    worldrecord_btn.update();
   } else if (page == "sletkonto") {
     // Yes or no
     background(bgshop);
@@ -119,6 +122,8 @@ void draw() {
     background(bgshop);
     shop.update();
   } else if (page == "worldrecord") {
+    background(bgshop);
+    start_btn.update();
     String sql_command = "SELECT * FROM users";
     db.query(sql_command);
     int max_highscore = 0;
@@ -127,7 +132,7 @@ void draw() {
         max_highscore = db.getInt("highscore"); 
       }
     }
-    text(max_highscore, 100, 100);
+    text(max_highscore, 100, 400);
   } else if (page == "info") {
     background(bginfo);
     start_btn.update();
