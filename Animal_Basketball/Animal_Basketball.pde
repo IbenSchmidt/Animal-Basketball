@@ -127,12 +127,14 @@ void draw() {
     String sql_command = "SELECT * FROM users";
     db.query(sql_command);
     int max_highscore = 0;
+    String max_highscore_username = "";
     while (db.next()) {
       if (db.getInt("highscore") > max_highscore) {
         max_highscore = db.getInt("highscore"); 
+        max_highscore_username = db.getString("username");
       }
     }
-    text("Den højeste score er: "+max_highscore +" Og den er lavet af ", 100, 400);
+    text("Den højeste score er: "+max_highscore +" Og den er lavet af: "+max_highscore_username, 100, 400);
   } else if (page == "info") {
     background(bginfo);
     start_btn.update();
