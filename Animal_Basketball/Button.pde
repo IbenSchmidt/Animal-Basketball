@@ -91,7 +91,6 @@ class EnterButton {
           db.execute(sql_command);
         }
         
-        
         if (error_messages.size() == 0) {
           if (action == "signup") {
             String sql_command = "INSERT INTO users (username, password, highscore, all_available_points) VALUES ('" + username + "', '" + hashed_password + "', 0, 0)";
@@ -126,6 +125,7 @@ class EnterButton {
     username = db.getString("username");
     ball.highscore=db.getInt("highscore");
     all_available_points=db.getInt("all_available_points");
+    all_available_points = 50;
     
     cp5.remove("username");
     cp5.remove("password");
@@ -147,35 +147,36 @@ class BuyButton {
     pos = pos_;
     btnColor = color_;
     size = new PVector(100, 70);
-
-    if (int(item_.img_name) == 1) {
-      canBuy = false;
-    }
   }
 
   void update() {
     rectMode(CENTER);
-    if (canBuy) {
+    if (!bought_hands.contains(item.img_name)) {
       fill(btnColor.x, btnColor.y, btnColor.z);
     } else {
       fill(0, 255, 255);
     }
+    
+    // Hvis hånden er den aktive hånd
+    println(hand.billedeid, item.img_name);
+    if (hand.billedeid == item.img_name) {
+      fill(255, 0, 255);
+    }
+    
     rect(pos.x, pos.y, size.x, size.y);
     textSize(20);
     fill(0);
     text("Køb for: \n" + item.price, pos.x-45, pos.y-10);
 
-
     // Check for tryk på knappen
     if (mousePressed == true) {
       boolean mouse_press_x = pos.x - size.x/2 < mouseX && mouseX < pos.x + size.x/2;
       boolean mouse_press_y = pos.y - size.y/2 < mouseY && mouseY < pos.y + size.y/2;
-      if (mouse_press_x && mouse_press_y && canBuy) {
+      if (mouse_press_x && mouse_press_y) {
         if (mousePressed && mouseButton == LEFT) { 
           // Bought item
           if (shop.buyCurrentItem(item)) {
             message = "Du har nu købt en hånd";
-            canBuy = false;
           }
         }
       }

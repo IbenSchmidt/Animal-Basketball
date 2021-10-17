@@ -1,17 +1,35 @@
 class Hand {
   public float pos;
   PImage billede;
-  int billedeid;
+  String billedeid;
   public PVector force;
   float forceDisplay;
   boolean shoot = false;
 
   Hand() {
-    billedeid = 1;
+    billedeid = "1";
     billede = loadImage("images/Hånd1.png");
   }
 
-  boolean updateHandImage(int billedeid_, int price) {
+  boolean buyHand(String img_name, int price) {
+    if (bought_hands.contains(img_name)) {
+      updateHandImage(img_name);
+    } else if (all_available_points >= price) {
+      all_available_points -= price;
+      bought_hands += "_" + img_name;
+      updateHandImage(img_name);
+    } else {
+      return false;
+    }
+    return true;
+  }
+
+  void updateHandImage(String billedeid_) {
+    billedeid = billedeid_; // Opdatere sådan at man kan se hvilken hånd der er aktiv
+    billede = loadImage("images/Hånd"+billedeid_+".png");
+  }
+  
+  boolean __updateHandImage(String billedeid_, int price) {
     if (billedeid != billedeid_) {
       all_available_points -= price;
       billedeid = billedeid_;

@@ -1,4 +1,5 @@
 String message = "";
+String bought_hands = "1";
 
 class Shop {
   ArrayList<ShopItem> shopItems = new ArrayList<ShopItem>();
@@ -50,16 +51,13 @@ class Shop {
   }
 
   boolean buyCurrentItem(ShopItem item) {
-    if (all_available_points >= item.price) {
-      if (!hand.updateHandImage(int(item.img_name), item.price)) {
-        message = "Du ejer allerede denne genstand";
-        return false;
-      }
-      message = "Købt genstand";
-      return true;
+    boolean hasBought = hand.buyHand(item.img_name, item.price);
+    if (!hasBought) {
+      message = "Du har ikke penge nok";
+      return false;
     }
-    message = "Du har ikke nok penge";
-    return false;
+    message = "Du har nu købt hånden"; 
+    return true;
   }
 }
 
