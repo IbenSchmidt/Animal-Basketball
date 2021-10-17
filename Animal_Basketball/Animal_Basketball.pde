@@ -118,6 +118,16 @@ void draw() {
   } else if (page == "shop") {
     background(bgshop);
     shop.update();
+  } else if (page == "worldrecord") {
+    String sql_command = "SELECT * FROM users";
+    db.query(sql_command);
+    int max_highscore = 0;
+    while (db.next()) {
+      if (db.getInt("highscore") > max_highscore) {
+        max_highscore = db.getInt("highscore"); 
+      }
+    }
+    text(max_highscore, 100, 100);
   } else if (page == "info") {
     background(bginfo);
     start_btn.update();
