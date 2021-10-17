@@ -56,7 +56,7 @@ class Shop {
       message = "Du har ikke penge nok";
       return false;
     }
-    message = "Du har nu købt hånden"; 
+    message = "Du har nu købt hånden";
     return true;
   }
 }

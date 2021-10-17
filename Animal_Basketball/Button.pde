@@ -125,7 +125,10 @@ class EnterButton {
     username = db.getString("username");
     ball.highscore=db.getInt("highscore");
     all_available_points=db.getInt("all_available_points");
-    all_available_points = 50;
+    bought_hands = db.getString("hands_");
+    if (bought_hands == null) {
+      bought_hands = "1";
+    }
     
     cp5.remove("username");
     cp5.remove("password");
@@ -151,6 +154,8 @@ class BuyButton {
 
   void update() {
     rectMode(CENTER);
+    println(bought_hands);
+    println(item.img_name);
     if (!bought_hands.contains(item.img_name)) {
       fill(btnColor.x, btnColor.y, btnColor.z);
     } else {

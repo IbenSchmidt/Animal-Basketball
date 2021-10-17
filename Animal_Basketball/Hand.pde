@@ -18,6 +18,9 @@ class Hand {
       all_available_points -= price;
       bought_hands += "_" + img_name;
       updateHandImage(img_name);
+      
+      String sql_command = "UPDATE users SET hands_ = '"+ bought_hands + "' WHERE username = '" + username +"'";
+      db.execute(sql_command);
     } else {
       return false;
     }
