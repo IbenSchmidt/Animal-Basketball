@@ -22,6 +22,7 @@ Button shop_btn;
 Button info_btn;
 Button start_btn;
 Button delete_acc_btn;
+Button dont_delete_btn;
 
 Shop shop;
 
@@ -85,6 +86,7 @@ void setup() {
   info_btn = new Button("info", new PVector(width/2 - 100, height/2 + 180), new PVector(176, 87));
   start_btn = new Button("start", new PVector(100, 50), new PVector(176, 87));
   delete_acc_btn = new Button("sletkonto", new PVector(width/2+100, height/2+180), new PVector(174, 85));
+  dont_delete_btn = new Button("start", new PVector((width/2 - 174), 380), new PVector(174, 85));
   
   // new PVector(100, 50), new PVector(100, 40));
 }
@@ -109,10 +111,10 @@ void draw() {
     delete_acc_btn.update();
   } else if (page == "sletkonto") {
     // Yes or no
-    background(bginfo);
-    text("SLET KONTO", width/2-100, 200);
+    background(bgshop);
+    text("Er du sikker?", width/2-100, 200);
     delete_button.update();
-    
+    dont_delete_btn.update();
   } else if (page == "shop") {
     background(bgshop);
     shop.update();
