@@ -110,6 +110,7 @@ class EnterButton {
     fill(255, 0,0);
     for (String i : error_messages) {
       iter += 1;
+      textSize(25);
       text(i, 10, 10 + (iter*40));
     }
     fill(255);
