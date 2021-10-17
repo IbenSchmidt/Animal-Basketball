@@ -89,6 +89,8 @@ class EnterButton {
           String sql_command = "DELETE FROM users WHERE username='"+user_id+"';";
           println(sql_command);
           db.execute(sql_command);
+          cp5.getController("username").setVisible(true);
+          cp5.getController("password").setVisible(true);
         }
         
         if (error_messages.size() == 0) {
@@ -129,9 +131,12 @@ class EnterButton {
     if (bought_hands == null) {
       bought_hands = "1";
     }
+    cp5.getController("username").setVisible(false);
+    cp5.getController("password").setVisible(false);
     
-    cp5.remove("username");
-    cp5.remove("password");
+    
+    //cp5.remove("username");
+    //cp5.remove("password");
     page = "start";
   }
 }

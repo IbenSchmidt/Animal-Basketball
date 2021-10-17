@@ -59,7 +59,7 @@ void setup() {
   //dette er signup knappen
   login_button = new EnterButton(new PVector((width/2)-185, 380), new PVector(174, 85), "login");
   signup_button = new EnterButton(new PVector((width/2), 380), new PVector(174, 85), "signup");
-  delete_button = new EnterButton(new PVector((width/2), 380), new PVector(174, 85), "sletkonto");
+  delete_button = new EnterButton(new PVector((width/2), 680), new PVector(174, 85), "sletkonto");
   
   //Dette er hhv koordinater og størrelse på signin knappen
   //rect((width/2)+10,380,174,85);
@@ -86,7 +86,7 @@ void setup() {
   info_btn = new Button("info", new PVector(width/2 - 100, height/2 + 180), new PVector(176, 87));
   start_btn = new Button("start", new PVector(100, 50), new PVector(176, 87));
   delete_acc_btn = new Button("sletkonto", new PVector(width/2+100, height/2+180), new PVector(174, 85));
-  dont_delete_btn = new Button("start", new PVector((width/2 - 100), 422), new PVector(174, 85));
+  dont_delete_btn = new Button("start", new PVector((width/2 - 100), 722), new PVector(174, 85));
   worldrecord_btn = new Button("worldrecord", new PVector((width/2),(height/2+285)), new PVector(376,87));
   
   // new PVector(100, 50), new PVector(100, 40));
@@ -114,7 +114,8 @@ void draw() {
   } else if (page == "sletkonto") {
     // Yes or no
     background(bgshop);
-    text("Er du sikker?", width/2-100, 200);
+    textSize(40);
+    text("Er du sikker?", width/2-100, 450);
     delete_button.update();
     dont_delete_btn.update();
   } else if (page == "shop") {
